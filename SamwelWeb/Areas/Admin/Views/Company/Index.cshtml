@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Company>
+@{
+}
+<div class="card shadow border-0 mt-4">
+	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2">  Company List </h2>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="container">
+			<div class="row pb-3 ">
+				<div class="col-6">
+				</div>
+				<div class="col-6 text-end">
+					<a asp-controller="Company" asp-action="Create" class="btn btn-primary"><i class="bi bi-cloud-plus-fill"></i> Create New Comapny </a>
+				</div>
+			</div>
+		</div>
+		<!--
+			 public string Name { get; set; }
+		public string? StreetAddress { get; set; }
+		public string? City { get; set; }
+		public string? State { get; set; }
+		public string? PostalCode { get; set; }
+
+		public string? PhoneNumber { get; set; }
+		-->
+
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Comany Name </th>
+					<th>Street Address   </th>
+					<th>City</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var company in Model)
+				{
+					<tr>
+						<td>@company.Name </td>
+						<td>@company.StreetAddress </td>
+						<td>@company.City </td>
+						<td>
+							<div class="w-75 btn-group " role="group">
+								<a asp-route-Id="@company.Id" class="btn btn-outline-info mx-2" asp-action="Edit"><i class="bi bi-pen-fill"></i> Edit</a>
+								<a asp-route-Id="@company.Id" class="btn btn-outline-danger mx-2" asp-action="Delete"><i class="bi bi-trash3"></i> Delete</a>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+
+	</div>
+</div>
+
